@@ -64,46 +64,6 @@ type Key string
 type Value string
 type Rule func(v Value) bool
 
-// byr (Birth Year) - four digits; at least 1920 and at most 2002.
-// iyr (Issue Year) - four digits; at least 2010 and at most 2020.
-// eyr (Expiration Year) - four digits; at least 2020 and at most 2030.
-
-// hgt (Height) - a number followed by either cm or in:
-// 	If cm, the number must be at least 150 and at most 193.
-// 	If in, the number must be at least 59 and at most 76.
-
-// hcl (Hair Color) - a # followed by exactly six characters 0-9 or a-f.
-
-func test() {
-	x := cidRule(Value("asd"))
-	if x != true {
-		panic("cid not pass")
-	}
-	println("TestCid passed")
-	x = iyrRule(Value("2002"))
-	if x != true {
-		panic("Testiyr fail")
-	}
-	println("Testiyr pass")
-
-	x = byrRule(Value("2011"))
-	if !x {
-		panic("Test byr fail")
-	}
-	println("Testbyr pass")
-
-	x = eyrRule(Value("2020"))
-	if !x {
-		panic("eyr")
-	}
-	println("test eyr pass")
-
-	x = hgtRule(Value("59in"))
-	if !x {
-		panic("hgt")
-	}
-
-}
 
 func cidRule(v Value) bool {
 	return true
