@@ -11,8 +11,28 @@ var (
 	rules                [][][]int
 	target, term1, term2 string // terminal chars
 	tid1, tid2           int    // rule containing the terminal chars
+  dp = make(map[Pair]bool)
 )
 
+
+func parseList(s, sep string) []int {
+  str := strings.Split(s, sep)
+  arr := make([]int, len(str))
+  for i, v := range str {
+    x, err := strconv.Atoi(v)
+    if err != nil { panic("invalid") }
+    arr[i] = x
+  }
+  return arr
+}
+
+type Pair struct {
+  s string
+  n int
+}
+
+
+// -------------------------------
 func evalSeq(s string, r []int) bool {
 	// a sequence of rules
 	if len(s) == 0 && len(r) == 0 { return true }
@@ -24,13 +44,6 @@ func evalSeq(s string, r []int) bool {
 	}
 	return false
 }
-
-type Pair struct {
-	s string
-	n int
-}
-
-var dp = make(map[Pair]bool)
 
 func evalOne(s string, n int) bool {
 	if v, ok := dp[Pair{s, n}]; ok { return v }
@@ -44,17 +57,8 @@ func evalOne(s string, n int) bool {
 	}
 	return res
 }
+// --------------------------------
 
-func parseList(s, sep string) []int {
-	str := strings.Split(s, sep)
-	arr := make([]int, len(str))
-	for i, v := range str {
-		x, err := strconv.Atoi(v)
-		if err != nil { panic("invalid") }
-		arr[i] = x
-	}
-	return arr
-}
 
 func main() {
 	bytes, err := ioutil.ReadFile("input")
