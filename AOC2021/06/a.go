@@ -33,10 +33,6 @@ func main() {
 		cnt[8] = ates
 		cnt[6] += tmp
 		ates = cnt[0]
-		var tot int
-		for i := 0; i < 9; i++ {
-			tot += cnt[i]
-		}
 	}
 	var ans int
 	for i := 0; i < 9; i++ {
