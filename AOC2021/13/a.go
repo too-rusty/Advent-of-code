@@ -49,11 +49,6 @@ func main() {
 		grid[Y[i]][X[i]] = 1
 	}
 
-	// for i := 0; i < rows; i++ {
-	// 	for j := 0; j < cols; j++ {
-
-	// 	}
-	// }
 	for i := 0; i < len(along); i++ {
 		if dir[i] {
 			grid = fold_x(grid, along[i])
@@ -92,8 +87,6 @@ func fold_y(grid [][]int, yaxis int) [][]int {
 	var top_offset int
 	if down > top {
 		top_offset = down - top
-	} else {
-		// down_offset = top - down
 	}
 	for i := 0; i < top; i++ {
 		for j := 0; j < m; j++ {
@@ -126,8 +119,6 @@ func fold_x(grid [][]int, xaxis int) [][]int {
 	var offset int
 	if right > left {
 		offset = right - left
-	} else {
-		// down_offset = top - down
 	}
 	for i := 0; i < n; i++ {
 		for j := 0; j < left; j++ {
@@ -168,3 +159,5 @@ func max(a ...int) int {
 	}
 	return mx
 }
+
+// EPUELPBR
